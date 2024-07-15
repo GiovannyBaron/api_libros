@@ -8,7 +8,8 @@ const Route = createRouteSegments([
     'Home',
     'BooksByAuthor',
     'BooksByCat',
-    'BooksByPublisher'
+    'BooksByPublisher',
+    'AuthorsByCat'
 ])
 
 const routeService = state => ({
@@ -20,7 +21,8 @@ const routeConfig = {
     Home: '/',
     BooksByAuthor: '/libros-por-autor',
     BooksByCat: '/libros-por-categoria',
-    BooksByPublisher: '/libros-por-editorial'
+    BooksByPublisher: '/libros-por-editorial',
+    AuthorsByCat: '/autores-por-categoria'
 }
 
 const router = createMithrilRouter({

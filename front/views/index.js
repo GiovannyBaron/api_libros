@@ -1,3 +1,4 @@
+import AuthorsByCat from './AuthorsByCat';
 import BooksByAuthor from './BooksByAuthor';
 import BooksByCat from './BooksByCat';
 import BooksByPublisher from './BooksByPublisher';
@@ -15,7 +16,8 @@ const { mkComponent } = require('../views/utils')
 const viewMap = {
     BooksByAuthor,
     BooksByCat,
-    BooksByPublisher
+    BooksByPublisher,
+    AuthorsByCat
 }
 
 export default mkComponent(
@@ -33,6 +35,7 @@ export default mkComponent(
                     m('button' + b.m('0 2rem'), { onclick: _ => actions.navigateTo([Route.BooksByAuthor()]) }, 'Buscar libros por autor'),
                     m('button' + b.m('0 2rem'), { onclick: _ => actions.navigateTo([Route.BooksByCat()]) }, 'Buscar libros por categoría'),
                     m('button' + b.m('0 2rem'), { onclick: _ => actions.navigateTo([Route.BooksByPublisher()]) }, 'Buscar libros por editorial'),
+                    m('button' + b.m('0 2rem'), { onclick: _ => actions.navigateTo([Route.AuthorsByCat()]) }, 'Buscar autores por categoría'),
                 ),
                 viewMap[mainView] && m('',
                     m(viewMap[mainView], { actions, state }),

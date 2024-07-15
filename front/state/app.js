@@ -21,7 +21,11 @@ const app = {
 
         publisherRequest: editorial => m.request({ url: `/libros-por-editorial/${editorial}`, method: 'GET' })
             .then(data => update({ Books: { booksByPublisher: data } }))
-            .catch(error => update({ Books: { booksByPublisher: error } }))
+            .catch(error => update({ Books: { booksByPublisher: error } })),
+
+        authorsByCatRequest: categoria => m.request({ url: `/autores-libros-por-categoria/${categoria}`, method: 'GET' })
+            .then(data => update({ Books: { authorsByCat: data } }))
+            .catch(error => update({ Books: { authorsByCat: error } }))
     }),
     Effects: (update, actions) => [
     ],
