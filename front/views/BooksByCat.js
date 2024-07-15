@@ -19,7 +19,7 @@ export default mkComponent(
             return m('',
                 m('h2', 'Bienvenido al buscador de libros por categoría'),
                 m('input', { type: 'text', oninput: ({ target: { value } }) => search = value }),
-                m('button', { onclick: _ => actions.categoryRequest(search) }, 'Botón'),
+                m('button', { onclick: _ => actions.categoryRequest(search) }, 'Buscar autores'),
                 !hasError ? map(({ Titulo }) => m('p', Titulo), booksByCat)
                     : m('p', booksByCat?.detail),
             )

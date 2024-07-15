@@ -31,10 +31,6 @@ const app = {
     ],
     services: [
         routeService,
-        // state => {
-        //     const { routeTransition: { arrive, leave } } = state
-        //     return [map(v => ({ [v]: always({ ...initialState[v]?.(state) }) }), keys(arrive)), map(always(undefined), leave)]
-        // },
     ]
 }
 

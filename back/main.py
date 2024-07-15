@@ -1,13 +1,18 @@
-from . import models
-from fastapi import Depends, FastAPI, Request, HTTPException
+from pathlib import Path
+
+from fastapi import Depends, FastAPI, HTTPException, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
 
-from . import current_dir
 from .dependencies.db import engine, get_db
 from .models import Author, Base, Books, Category, Publisher
 from .schemas import AuthorCreate, BookCreate, CategoryCreate, PublisherCreate
+
+
+def current_dir(file):
+    return Path(file).parent.absolute()
+
 
 abs_path = current_dir(__file__)
 templates = Jinja2Templates(abs_path)
@@ -18,7 +23,7 @@ app = FastAPI()
 app.mount(
     "/static", StaticFiles(directory=abs_path / "static"), name="static")
 
-models.Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine)
 
 
 @app.get('/')

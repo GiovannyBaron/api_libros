@@ -19,7 +19,7 @@ export default mkComponent(
             return m('',
                 m('h2', 'Bienvenido al buscador de autores por categoría'),
                 m('input', { type: 'text', oninput: ({ target: { value } }) => search = value }),
-                m('button', { onclick: _ => actions.authorsByCatRequest(search) }, 'Botón'),
+                m('button', { onclick: _ => actions.authorsByCatRequest(search) }, 'Buscar autores'),
                 !hasError ? map(autor => m('p', autor), authorsByCat)
                     : m('p', authorsByCat?.detail),
             )
