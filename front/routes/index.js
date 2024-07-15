@@ -6,7 +6,9 @@ const navTo = route => ({ nextRoute: () => Array.isArray(route) ? route : [route
 
 const Route = createRouteSegments([
     'Home',
-    'BooksByAuthor'
+    'BooksByAuthor',
+    'BooksByCat',
+    'BooksByPublisher'
 ])
 
 const routeService = state => ({
@@ -16,7 +18,9 @@ const routeService = state => ({
 
 const routeConfig = {
     Home: '/',
-    BooksByAuthor: '/libros-por-autor'
+    BooksByAuthor: '/libros-por-autor',
+    BooksByCat: '/libros-por-categoria',
+    BooksByPublisher: '/libros-por-editorial'
 }
 
 const router = createMithrilRouter({

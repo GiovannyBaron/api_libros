@@ -1,4 +1,6 @@
 import BooksByAuthor from './BooksByAuthor';
+import BooksByCat from './BooksByCat';
+import BooksByPublisher from './BooksByPublisher';
 
 // Dependencias
 const m = require('mithril')
@@ -11,12 +13,13 @@ const { Route } = require('../routes')
 const { mkComponent } = require('../views/utils')
 
 const viewMap = {
-    BooksByAuthor
+    BooksByAuthor,
+    BooksByCat,
+    BooksByPublisher
 }
 
 export default mkComponent(
     ({ actions }) => {
-        let search
 
         return ({ state }) => {
             const routing = Routing(state.route)
@@ -28,8 +31,8 @@ export default mkComponent(
                 m('p', '¿Qué desea hacer?'),
                 m('' + b.d('flex'),
                     m('button' + b.m('0 2rem'), { onclick: _ => actions.navigateTo([Route.BooksByAuthor()]) }, 'Buscar libros por autor'),
-                    m('button' + b.m('0 2rem'), { onclick: _ => actions.navigateTo([Route.BooksByAuthor()]) }, 'Buscar libros por categoría'),
-                    m('button' + b.m('0 2rem'), { onclick: _ => actions.navigateTo([Route.BooksByAuthor()]) }, 'Buscar libros por editorial'),
+                    m('button' + b.m('0 2rem'), { onclick: _ => actions.navigateTo([Route.BooksByCat()]) }, 'Buscar libros por categoría'),
+                    m('button' + b.m('0 2rem'), { onclick: _ => actions.navigateTo([Route.BooksByPublisher()]) }, 'Buscar libros por editorial'),
                 ),
                 viewMap[mainView] && m('',
                     m(viewMap[mainView], { actions, state }),

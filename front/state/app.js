@@ -13,7 +13,15 @@ const app = {
 
         authorRequest: author => m.request({ url: `/libros-por-autor/${author}`, method: 'GET' })
             .then(data => update({ Books: { booksByAuthor: data } }))
-            .catch(error => update({ Books: { booksByAuthor: error } }))
+            .catch(error => update({ Books: { booksByAuthor: error } })),
+
+        categoryRequest: categoria => m.request({ url: `/libros-por-categoria/${categoria}`, method: 'GET' })
+            .then(data => update({ Books: { booksByCat: data } }))
+            .catch(error => update({ Books: { booksByCat: error } })),
+
+        publisherRequest: editorial => m.request({ url: `/libros-por-editorial/${editorial}`, method: 'GET' })
+            .then(data => update({ Books: { booksByPublisher: data } }))
+            .catch(error => update({ Books: { booksByPublisher: error } }))
     }),
     Effects: (update, actions) => [
     ],
