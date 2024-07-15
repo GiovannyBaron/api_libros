@@ -1,0 +1,34 @@
+{
+    "name": "apilibros",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "watch": "webpack --progress --config pack.js --watch",
+      "watch-prod": "webpack --progress --config pack-prod.js --watch"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "beercss": "2.1.3",
+      "browser-fs-access": "^0.34.1",
+      "bss": "^1.6.4",
+      "meiosis-routing": "^3.0.0",
+      "meiosis-setup": "5.1.2",
+      "mergerino": "^0.4.0",
+      "mithril": "^2.2.2",
+      "rambda": "^8.3.0",
+      "robot3": "^0.4.0",
+      "sass-loader": "^13.3.2"
+    },
+    "devDependencies": {
+      "css-loader": "^6.8.1",
+      "style-loader": "^3.3.3",
+      "svg-loader": "^0.0.2",
+      "webpack": "5.88.2",
+      "webpack-cli": "^5.1.4"
+    }
+  }
+  

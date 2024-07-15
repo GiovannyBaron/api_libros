@@ -23,7 +23,7 @@ models.Base.metadata.create_all(bind=engine)
 
 @app.get('/')
 async def read_template(request: Request):
-    return {'ok': True}
+    return templates.TemplateResponse("static/index.html", {"request": request})
 
 
 @app.post("/authors", response_model=AuthorCreate)
@@ -70,7 +70,7 @@ def create_book(book: BookCreate, db: Session = Depends(get_db)):
     return db_book
 
 
-@app.get('/libros-por-autor/{author}')
+@app.get('/libros-por-autor/{autor}')
 async def get_all_books_from_author(autor: str, db=Depends(get_db)):
     author = db.query(Author).filter(Author.Autor == autor).first()
     if author:
@@ -124,7 +124,7 @@ async def get_all_books_from_author(editorial: str, db=Depends(get_db)):
 
 @app.get('/autores-libros-por-categoria/{categoria}')
 async def get_all_books_from_author(categoria: str, db=Depends(get_db)):
-    category =  db.query(Category).filter(
+    category = db.query(Category).filter(
         Category.Categoria == categoria).first()
     if category:
         books = db.query(Books).filter(
@@ -133,7 +133,3 @@ async def get_all_books_from_author(categoria: str, db=Depends(get_db)):
         return set(book.Autor.Autor for book in books)
 
     return HTTPException(404, 'No se encontraron los autores para esa categoría')
-
-    # @app.get('/')
-    # async def read_template(request: Request):
-    #     return templates.TemplateResponse("static/index.html", {"request": request})
